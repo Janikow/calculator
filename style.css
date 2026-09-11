@@ -1,5 +1,14 @@
 
 
+.number-grid
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    width: 60%;
+    margin: 0 auto;
+}
+
 .btn1
 {
     background-color: #739969b7;
