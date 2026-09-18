@@ -1,13 +1,28 @@
-const button1 = document.getElementById("button1");
+const numberOfButtons = 50;
 
-function lexample()
-{
-    const img = document.createElement("img");
-    img.scr = "image.jpg";
-    img.alt = "An Image";
-    img.width = 300;
+const container = document.getElementById("grid-container");
 
-    document.getElementById("imageContainer").appendChild(img);
+const buttons = [];
+
+// Create buttons
+for (let i = 1; i <= numberOfButtons; i++) {
+    const btn = document.createElement("button");
+
+    btn.type = "button";
+    btn.className = "conwaybtn";
+    btn.id = `button${i}`;
+    btn.textContent = `Button ${i}`;
+
+    container.appendChild(btn);
+
+    buttons.push(btn);
 }
 
-button1.addEventListener("click", lexample);
+function lexample(event) {
+    console.log("Clicked:", event.target.id);
+}
+
+// Add event listener to every button
+buttons.forEach(button => {
+    button.addEventListener("click", lexample);
+});
