@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enter access key</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="start">
+    <main>
+      <h1>Locked<span>for now.</span></h1>
+      <p>Enter the access key to use this proxy. You'll stay signed in on this browser for 30 days.</p>
+      <form class="go" id="f">
+        <input class="field" id="key" type="password" autocomplete="current-password"
+               placeholder="Access key" aria-label="Access key" autofocus>
+        <button class="primary" type="submit">Unlock</button>
+      </form>
+      <div class="msg" id="msg" role="status"></div>
+    </main>
+  </div>
+  <script>
+    document.getElementById("f").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const msg = document.getElementById("msg");
+      msg.textContent = "Checking…";
+      try {
+        const r = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ key: document.getElementById("key").value }),
+        });
+        const data = await r.json();
+        if (data.ok) location.href = "/";
+        else msg.textContent = data.error || "That key isn't right.";
+      } catch {
+        msg.textContent = "Couldn't reach the server. Try again in a moment.";
+      }
+    });
+  </script>
+</body>
+</html>

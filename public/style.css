@@ -1,0 +1,51 @@
+:root {
+  --night: #14213D;
+  --deep: #0E1830;
+  --steel: #2B3A5C;
+  --mist: #E5E9F0;
+  --dim: #9AA6BD;
+  --amber: #FCA311;
+  --font: ui-rounded, "SF Pro Rounded", "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { font-family: var(--font); background: var(--night); color: var(--mist); }
+button, input { font: inherit; }
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+
+/* start screen */
+.start { min-height: 100%; display: grid; place-items: center; padding: 24px; }
+.start main { width: min(640px, 100%); }
+h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1; margin: 0 0 .4em; letter-spacing: -.03em; }
+h1 span { display: block; color: var(--steel); -webkit-text-stroke: 1px var(--mist); }
+.start p { margin: 0 0 1.5rem; line-height: 1.5; max-width: 52ch; }
+.go { display: flex; gap: 8px; }
+.field {
+  flex: 1; min-width: 0; font-size: 1.1rem; padding: 14px 16px;
+  border: 2px solid var(--steel); border-radius: 10px; background: var(--deep); color: #fff;
+}
+.primary {
+  font-weight: 700; font-size: 1.1rem; padding: 14px 22px; border: none; border-radius: 10px;
+  background: var(--amber); color: var(--night); cursor: pointer;
+}
+.msg { color: var(--amber); min-height: 1.5em; margin-top: .75rem; }
+.hint { color: var(--dim); font-size: .95rem; margin-top: 1.5rem; }
+
+/* browsing */
+.bar {
+  display: none; align-items: center; gap: 6px; padding: 6px 8px;
+  background: var(--deep); border-bottom: 1px solid var(--steel);
+}
+.bar form { flex: 1; min-width: 0; }
+.bar .field { width: 100%; font-size: .95rem; padding: 8px 12px; border-radius: 8px; border-width: 1px; }
+.icon {
+  width: 36px; height: 36px; flex: none; border: none; border-radius: 8px;
+  background: transparent; color: var(--mist); cursor: pointer; font-size: 1.1rem;
+}
+.icon:hover { background: var(--steel); }
+#frame-wrap { display: none; flex: 1; min-height: 0; }
+#frame-wrap iframe { width: 100%; height: 100%; border: 0; background: #fff; }
+body.browsing { display: flex; flex-direction: column; }
+body.browsing .start { display: none; }
+body.browsing .bar { display: flex; }
+body.browsing #frame-wrap { display: block; }

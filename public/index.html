@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proxy</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/scram/scramjet.all.js"></script>
+  <script src="/baremux/index.js"></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="bar">
+    <button class="icon" id="home" title="Home" aria-label="Home">⌂</button>
+    <button class="icon" id="back" title="Back" aria-label="Back">←</button>
+    <button class="icon" id="fwd" title="Forward" aria-label="Forward">→</button>
+    <button class="icon" id="reload" title="Reload" aria-label="Reload">↻</button>
+    <form id="bar-form">
+      <input class="field" id="bar-url" type="text" spellcheck="false" autocomplete="off" aria-label="Address">
+    </form>
+  </div>
+
+  <div class="start">
+    <main>
+      <h1>Go anywhere<span>through here.</span></h1>
+      <p>Type a web address or a search. Pages load through this server, including sites that use live connections.</p>
+      <form class="go" id="start-form">
+        <input class="field" id="start-url" type="text" inputmode="url" spellcheck="false"
+               autocomplete="off" placeholder="Search or enter address" aria-label="Search or address" autofocus>
+        <button class="primary" type="submit">Open</button>
+      </form>
+      <div class="msg" id="msg" role="status"></div>
+      <p class="hint">The first load after a while can take up to a minute while the server wakes up.</p>
+    </main>
+  </div>
+
+  <div id="frame-wrap"></div>
+</body>
+</html>
